@@ -163,12 +163,12 @@ conda activate AdvUnlearn
 
 #### a) Command Example: Multi-step Attack
 ```
-python train-scripts/AdvUnlearn.py --attack_init random --attack_step 30 --retain_train 'reg' --dataset_retain 'coco_object' --prompt 'nudity' --train_method 'text_encoder_full' --retain_loss_w 0.3
+python train-scripts/AdvUnlearn.py --attack_init random --attack_step 30 --retain_train reg --dataset_retain coco_object --prompt nudity --train_method text_encoder_full --retain_loss_w 0.3
 ```
 
 #### b) Command Example: Fast AT variant
 ```
-python train-scripts/AdvUnlearn.py --attack_method fast_at --attack_init random --attack_step 30 --retain_train 'reg' --dataset_retain 'coco_object' --prompt 'nudity' --train_method 'text_encoder_full'   --retain_loss_w 0.3
+python train-scripts/AdvUnlearn.py --attack_method fast_at --attack_init random --attack_step 30 --retain_train reg --dataset_retain coco_object --prompt nudity --train_method text_encoder_full   --retain_loss_w 0.3
 ```
 
 ### Step 2: Attack Evaluation [Robustness Evaluation] 
