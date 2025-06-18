@@ -157,6 +157,10 @@ conda activate AdvUnlearn
 * Retaining prompt dataset: `--dataset_retain`
 * Utility regularization parameter: `--retain_loss_w`
 
+#### 🚨 GPU Memory Requirement
+> **Note**: Training AdvUnlearn models requires a **GPU with at least 30GB of memory**.  
+
+
 #### a) Command Example: Multi-step Attack
 ```
 python train-scripts/AdvUnlearn.py --attack_init random --attack_step 30 --retain_train 'reg' --dataset_retain 'coco_object' --prompt 'nudity' --train_method 'text_encoder_full' --retain_loss_w 0.3
