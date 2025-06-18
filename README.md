@@ -9,9 +9,6 @@ Robust unlearning framework, AdvUnlearn, enhances diffusion models' safety by ro
 
 This is the code implementation of Robust DM Unlearning Framework: ```AdvUnlearn```, and its authors developed their code based on the code base of [SD](https://github.com/CompVis/stable-diffusion) and [ESD](https://github.com/rohitgandikota/erasing).
 
-<div align='center'>
-      <img src = 'assets/nudity_main.png'>
-</div>
 
 ## Simple Usage of AdvUnlearn Text Encoders ([HuggingFace Model](https://huggingface.co/OPTML-Group/AdvUnlearn))
 
