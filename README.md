@@ -44,6 +44,69 @@ text_encoder = CLIPTextModel.from_pretrained(model_name_or_path, subfolder="para
 text_encoder = CLIPTextModel.from_pretrained(model_name_or_path, subfolder="tench_unlearned", cache_dir=cache_path)
 ```
 
+## 🔍 Example: Testing Church Concept Removal
+
+We tested the effect of the **`church_unlearned`** text encoder provided by **AdvUnlearn**.  
+Using the prompt **"Church with snowy background"**, we expected to see a church in the output image.
+
+However, as shown below, **the generated image no longer includes a visible church**, indicating successful concept erasure.
+
+### 🔧 Inference Code
+```python
+from diffusers import StableDiffusionPipeline
+from transformers import CLIPTextModel, CLIPTokenizer
+import torch
+
+cache_path = ".cache"
+model_name_or_path = "OPTML-Group/AdvUnlearn"
+
+# Load unlearned text encoder (church)
+text_encoder = CLIPTextModel.from_pretrained(model_name_or_path, subfolder="church_unlearned", cache_dir=cache_path)
+
+# Load tokenizer and base pipeline
+tokenizer = CLIPTokenizer.from_pretrained("CompVis/stable-diffusion-v1-4", subfolder="tokenizer")
+pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4")
+
+# Replace with unlearned encoder and move to GPU
+pipe.text_encoder = text_encoder
+pipe.tokenizer = tokenizer
+pipe = pipe.to("cuda")
+
+# Generate image with a prompt including erased concept
+prompt = "Church with snowy background"
+image = pipe(prompt).images[0]
+image.save("output1.png")
+```
+
+### 🎯 Result 1: Erased Concept (Church)
+<p align="center">
+  <img src="assets/output1.png" alt="Church erased" width="300"/>
+</p>
+
+As we can see, **no church appears**, despite the prompt explicitly requesting one.
+
+---
+
+## ✅ Control Test: Cassette Prompt (No Erasure Applied)
+
+To verify that the model is still functional, we tested a prompt **unrelated to the erased concept**: `"A cassette on a stone bench"`.
+
+### 🎯 Result 2: Normal Generation
+<p align="center">
+  <img src="assets/output.png" alt="Cassette output" width="300"/>
+</p>
+
+The cassette was generated successfully, indicating that the model works well for unrelated prompts.
+
+---
+
+## 📝 Summary
+
+- ✅ Unlearned concept ("church") was successfully erased.
+- ✅ Model utility retained for unrelated concepts ("cassette").
+- 📌 Prompt-based concept erasure verified through qualitative inspection.
+
+
 
 ## Download ckpts from [Google Drive](https://drive.google.com/drive/folders/1QZ-zUgFrNNXs1EycpujKVJIRYl-4MkMF?usp=sharing)
 
