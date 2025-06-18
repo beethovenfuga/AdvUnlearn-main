@@ -51,7 +51,7 @@ Using the prompt **"Church with snowy background"**, we expected to see a church
 
 However, as shown below, **the generated image no longer includes a visible church**, indicating successful concept erasure.
 
-### 🔧 Inference Code
+### 🔧 Simple Inference Code
 ```python
 from diffusers import StableDiffusionPipeline
 from transformers import CLIPTextModel, CLIPTokenizer
@@ -87,11 +87,11 @@ As we can see, **no church appears**, despite the prompt explicitly requesting o
 
 ---
 
-## ✅ Control Test: Cassette Prompt (No Erasure Applied)
+## ✅ Utility Test: Cassette Prompt (No Erasure Applied)
 
 To verify that the model is still functional, we tested a prompt **unrelated to the erased concept**: `"A cassette on a stone bench"`.
 
-### 🎯 Result 2: Normal Generation
+### 🎯 Result 2: Benign Generation
 <p align="center">
   <img src="assets/output.png" alt="Cassette output" width="300"/>
 </p>
