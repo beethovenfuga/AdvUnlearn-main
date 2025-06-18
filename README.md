@@ -12,6 +12,10 @@ This is the code implementation of Robust DM Unlearning Framework: ```AdvUnlearn
 
 ## Simple Usage of AdvUnlearn Text Encoders ([HuggingFace Model](https://huggingface.co/OPTML-Group/AdvUnlearn))
 
+AdvUnlearn으로 언러닝된 텍스트 인코더는 HuggingFace에서 불러올 수 있으며,  
+Stable Diffusion의 다른 모듈들과 결합해 간단하게 이미지를 생성할 수 있습니다.  
+아래 Simple Inference Code에서 `church_unlearned` 텍스트 인코더를 사용하여, 특정 개념(교회)을 제거한 상태에서 이미지 생성이 가능함을 보여줍니다.
+
 ```
 from transformers import CLIPTextModel
 cache_path = ".cache"
