@@ -1,6 +1,6 @@
 <div align="center">
       
-# NeurIPS 2024 <br> Defensive Unlearning with Adversarial Training <br> for Robust Concept Erasure in Diffusion Models
+# [NeurIPS 2024] <br> Defensive Unlearning with Adversarial Training <br> for Robust Concept Erasure in Diffusion Models
 
 <div align="left">
       
